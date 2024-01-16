@@ -15,29 +15,25 @@ class User implements ObserverObject, SubjectObservable {
     private Set<ObserverObject> followers;
     private String name;
 
-    public User(String name) {
+    User(String name) {
         this.name = name;
         this.followers = new HashSet<>();
     }
 
-    @Override
     public void registerObserver(ObserverObject observer) {
         followers.add(observer);
     }
 
-    @Override
     public void removeObserver(ObserverObject observer) {
         followers.remove(observer);
     }
 
-    @Override
     public void notifyObservers(String post) {
         for (ObserverObject observer : followers) {
             observer.update(post);
         }
     }
 
-    @Override
     public void update(String post) {
         System.out.println();
         System.out.println(this.name + " received a notification \nPost: " + post + "\n");
