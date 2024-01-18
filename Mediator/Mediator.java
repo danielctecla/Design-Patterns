@@ -20,7 +20,7 @@ abstract class User {
 }
 
 class UsertoChat extends User {
-    public UsertoChat(ChatMediator mediator, String name) {
+    UsertoChat(ChatMediator mediator, String name) {
         super(mediator, name);
     }
 
@@ -34,10 +34,10 @@ class UsertoChat extends User {
     }
 }
 
-class ChatMediatorImpl implements ChatMediator {
+class ChatGroupMediator implements ChatMediator {
     private List<User> users;
 
-    public ChatMediatorImpl() {
+    ChatGroupMediator() {
         this.users = new ArrayList<>();
     }
 
@@ -57,7 +57,7 @@ class ChatMediatorImpl implements ChatMediator {
 public class Mediator {
 
     public static void main(String[] args) {
-        ChatMediator mediator = new ChatMediatorImpl();
+        ChatMediator mediator = new ChatGroupMediator();
 
         User user1 = new UsertoChat(mediator, "Pedro");
         User user2 = new UsertoChat(mediator, "Maria");
